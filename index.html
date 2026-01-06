@@ -80,7 +80,7 @@
 
         <div class="project-card" data-tilt onclick="openModal('Celestial Celebration: Diwali VFX', 'A creative coding project utilizing particle physics and math-based animations. This interactive display simulates colorful firework bursts with physics-based gravity and trail effects, optimized for smooth performance.', 'https://github.com/Souvik-Dey-2029', 'project3.jpg')">
           <img src="Assets/project3.png" alt="Diwali Show">
-          <div class="card-overlay"><h3>VFX Particle Show</h3></div>
+          <div class="card-overlay"><h3>VFX Diwali Show</h3></div>
         </div>
 
         <div class="project-card" data-tilt onclick="openModal('Precision Type: Speed Trainer', 'A functional productivity tool designed to measure WPM (Words Per Minute) and accuracy in real-time. Features include dynamic text generation, timer logic, and a clean, minimalist UI to minimize user distraction.', 'https://github.com/Souvik-Dey-2029', 'project4.png')">
@@ -98,7 +98,8 @@
       <img id="modalImg" src="" alt="Project Preview">
       <h2 id="modalTitle"></h2>
       <p id="modalDesc"></p>
-      <a id="modalCode" href="#" class="github-btn" target="_blank">View Code</a>
+      <br>
+      <a id="modalCode" href="https://github.com/Souvik-Dey-2029" class="github-btn" target="_blank">View Code</a>
     </div>
   </div>
 
@@ -115,13 +116,12 @@
             <a href="mailto:souvik.business18@gmail.com" class="social-icon">Email</a>
           </div>
         </div>
-        
-        <form class="contact-form" action="https://formspree.io/f/souvik.business18@gmail.com" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-          <button type="submit" class="cta">Send Message</button>
-        </form>
+      <form class="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="button" class="cta" onclick="sendEmail()">Send Message</button>
+      </form>
       </div>
     </section>
   </div>

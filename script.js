@@ -100,41 +100,16 @@ function reveal() {
     }
   });
 }
-const contactForm = document.querySelector('.contact-form');
-
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const button = contactForm.querySelector('button');
-  const originalText = button.textContent;
+function sendEmail() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
   
-  button.textContent = "Sending...";
-  button.disabled = true;
+  const subject = encodeURIComponent(`Portfolio Message from ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
 
-  const formData = new FormData(contactForm);
-  
-  try {
-    const response = await fetch(contactForm.action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      button.textContent = "Message Sent! ✓";
-      button.style.background = "#22c55e";
-      contactForm.reset();
-    } else {
-      throw new Error();
-    }
-  } catch (error) {
-    button.textContent = "Error! Try Again";
-    button.style.background = "#ef4444";
-  }
-  setTimeout(() => {
-    button.textContent = originalText;
-    button.style.background = ""; 
-    button.disabled = false;
-  }, 3000);
-});
+  window.location.href = `mailto:souvik.business18@gmail.com?subject=${subject}&body=${body}`;
+}
 
 function openModal(title, desc, codeUrl, imgPath) {
   document.getElementById("modalTitle").innerText = title;
