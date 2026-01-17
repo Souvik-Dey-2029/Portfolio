@@ -116,12 +116,21 @@
             <a href="mailto:souvik.business18@gmail.com" class="social-icon">Email</a>
           </div>
         </div>
-      <form class="contact-form">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="button" class="cta" onclick="sendEmail()">Send Message</button>
-      </form>
+        <form class="contact-form" 
+              action="mailto:souvik.business18@gmail.com" 
+              method="POST" 
+              enctype="text/plain">
+
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+          <button type="submit" class="cta">Send Message</button>
+
+          <p style="font-size:12px;opacity:0.6;margin-top:10px;">
+            This form opens your email client. No data is stored on this website.
+          </p>
+        </form>
       </div>
     </section>
   </div>

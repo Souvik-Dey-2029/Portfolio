@@ -99,18 +99,6 @@ function reveal() {
       el.classList.add('active');
     }
   });
-}
-function sendEmail() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-  
-  const subject = encodeURIComponent(`Portfolio Message from ${name}`);
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-
-  window.location.href = `mailto:souvik.business18@gmail.com?subject=${subject}&body=${body}`;
-}
-
 function openModal(title, desc, codeUrl, imgPath) {
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("modalDesc").innerText = desc;
