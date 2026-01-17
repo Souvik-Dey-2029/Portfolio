@@ -99,6 +99,7 @@ function reveal() {
       el.classList.add('active');
     }
   });
+}
 function openModal(title, desc, codeUrl, imgPath) {
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("modalDesc").innerText = desc;
