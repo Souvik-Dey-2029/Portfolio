@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio! This is a high-performance, responsive web application designed to showcase my skills in UI/UX design and Frontend Development.
 
-**🌐 Live Demo:** [View My Portfolio](https://portfolio-vercel-gold.vercel.app/)
+**🌐 Live Demo:** [View My Portfolio](https://portfolio-vercel2.vercel.app/)
 
 ---
 
