@@ -468,3 +468,403 @@ html {
   font-size: 30px;
   cursor: pointer;
 }
+
+.footer {
+  padding: 40px 60px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.footer-text {
+  font-size: 13px;
+  color: rgba(224, 224, 224, 0.6);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.footer-line {
+  width: 100px;
+  height: 2px;
+  background: var(--primary);
+  margin: 0 auto;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+/* ============================================
+   ADD THIS TO YOUR EXISTING style.css
+   (Don't replace anything, just add at the end)
+   ============================================ */
+
+/* 3D SCROLL ANIMATION FOR PAGES */
+.page1, .page2, .page-projects, .page3, .page-certificates {
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+              opacity 0.8s ease;
+}
+
+/* Initial state - pages start slightly transformed */
+.page1:not(.active-3d) {
+  transform: perspective(1000px) rotateX(5deg) translateY(50px);
+  opacity: 0.3;
+}
+
+.page2:not(.active-3d) {
+  transform: perspective(1000px) rotateY(-3deg) translateX(-30px);
+  opacity: 0.3;
+}
+
+.page-projects:not(.active-3d) {
+  transform: perspective(1000px) rotateX(-5deg) translateY(-50px);
+  opacity: 0.3;
+}
+
+.page3:not(.active-3d) {
+  transform: perspective(1000px) rotateY(3deg) translateX(30px);
+  opacity: 0.3;
+}
+
+.page-certificates:not(.active-3d) {
+  transform: perspective(1000px) rotateX(5deg) scale(0.95);
+  opacity: 0.3;
+}
+
+/* Active state - pages are flat and visible when scrolled to */
+.page1.active-3d,
+.page2.active-3d,
+.page-projects.active-3d,
+.page3.active-3d,
+.page-certificates.active-3d {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0) translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ============================================
+   CERTIFICATE SECTION - FUTURISTIC DESIGN
+   ============================================ */
+
+.page-certificates {
+  padding: 80px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.certificates h2 {
+  text-align: center;
+  font-size: 46px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.certificates h2::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+  box-shadow: 0 0 20px #a855f7;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
+  margin: 60px auto 0;
+  perspective: 1500px;
+}
+
+.certificate-card {
+  position: relative;
+  background: rgba(15, 12, 41, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+/* Holographic border for certificates */
+.certificate-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(45deg, 
+    #a855f7, 
+    #06b6d4, 
+    #10b981, 
+    #a855f7
+  );
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: borderRotate 4s linear infinite;
+  pointer-events: none;
+}
+
+.certificate-card:hover::before {
+  opacity: 1;
+}
+
+.certificate-card:hover {
+  transform: translateY(-10px) rotateX(2deg);
+  border-color: #a855f7;
+  box-shadow: 
+    0 20px 40px rgba(168, 85, 247, 0.3),
+    0 0 60px rgba(168, 85, 247, 0.15),
+    inset 0 0 30px rgba(168, 85, 247, 0.05);
+}
+
+/* Certificate icon/badge */
+.cert-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #a855f7, #06b6d4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+  transition: all 0.4s ease;
+}
+
+.certificate-card:hover .cert-icon {
+  transform: rotateY(360deg) scale(1.1);
+  box-shadow: 0 15px 40px rgba(168, 85, 247, 0.6);
+}
+
+.cert-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.cert-issuer {
+  font-size: 16px;
+  color: #a855f7;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.cert-date {
+  font-size: 14px;
+  color: #cbd5f5;
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.cert-description {
+  font-size: 14px;
+  color: #cbd5f5;
+  line-height: 1.6;
+  text-align: center;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+/* View certificate button */
+.cert-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 2px solid #a855f7;
+  border-radius: 10px;
+  color: #a855f7;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cert-btn:hover {
+  background: #a855f7;
+  color: white;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+  transform: scale(1.05);
+}
+
+/* Tech grid for certificates */
+.cert-tech-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(168, 85, 247, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.certificate-card:hover .cert-tech-grid {
+  opacity: 1;
+}
+
+/* Corner accents for certificates */
+.cert-corner {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #a855f7;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 10;
+}
+
+.cert-corner.top-left {
+  top: 15px;
+  left: 15px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cert-corner.top-right {
+  top: 15px;
+  right: 15px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cert-corner.bottom-left {
+  bottom: 15px;
+  left: 15px;
+  border-right: none;
+  border-top: none;
+}
+
+.cert-corner.bottom-right {
+  bottom: 15px;
+  right: 15px;
+  border-left: none;
+  border-top: none;
+}
+
+.certificate-card:hover .cert-corner {
+  opacity: 1;
+  box-shadow: 0 0 10px #a855f7;
+}
+
+/* Responsive for certificates */
+@media (max-width: 768px) {
+  .page-certificates {
+    padding: 40px 20px;
+  }
+  
+  .certificate-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  /* Disable 3D effects on mobile for better performance */
+  .page1, .page2, .page-projects, .page3, .page-certificates {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+/* ============================================
+   CERTIFICATE MODAL STYLES
+   ============================================ */
+
+.certificate-modal-content {
+  max-width: 700px;
+  max-height: 85vh;
+  padding: 30px;
+  background: #1b1937;
+  overflow-y: auto;
+}
+
+#certificateImg {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  border: 2px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.certificate-details {
+  text-align: left;
+  padding: 20px 0;
+}
+
+.certificate-details h2 {
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.cert-modal-issuer {
+  color: #a855f7;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.cert-modal-date {
+  color: #cbd5f5;
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.cert-modal-desc {
+  color: #cbd5f5;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.cert-modal-id {
+  color: #cbd5f5;
+  font-size: 13px;
+  opacity: 0.7;
+  font-family: 'Courier New', monospace;
+  background: rgba(168, 85, 247, 0.1);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border-left: 3px solid #a855f7;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .certificate-modal-content {
+    padding: 20px;
+    margin: 10% auto;
+  }
+  
+  .certificate-details h2 {
+    font-size: 22px;
+  }
+}

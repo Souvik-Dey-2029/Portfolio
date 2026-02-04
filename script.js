@@ -117,3 +117,87 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+// ============================================
+// ADD THIS TO YOUR EXISTING script.js
+// (Don't replace anything, just add at the end)
+// ============================================
+
+// 3D SCROLL EFFECT FOR PAGES
+function handle3DScroll() {
+  const pages = document.querySelectorAll('.page1, .page2, .page-projects, .page3, .page-certificates');
+  
+  pages.forEach(page => {
+    const rect = page.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const pageCenter = rect.top + rect.height / 2;
+    const viewportCenter = windowHeight / 2;
+    
+    // Calculate if page is in viewport center (active zone)
+    const distanceFromCenter = Math.abs(pageCenter - viewportCenter);
+    const maxDistance = windowHeight;
+    
+    // Add active-3d class when page is near center
+    if (distanceFromCenter < maxDistance * 0.6) {
+      page.classList.add('active-3d');
+    } else {
+      page.classList.remove('active-3d');
+    }
+  });
+}
+
+// Initialize 3D effect on load
+window.addEventListener('load', handle3DScroll);
+
+// Update 3D effect on scroll
+window.addEventListener('scroll', handle3DScroll);
+
+// CERTIFICATE CARD TILT EFFECT (if VanillaTilt is loaded)
+if (typeof VanillaTilt !== 'undefined') {
+  window.addEventListener('load', () => {
+    VanillaTilt.init(document.querySelectorAll(".certificate-card"), {
+      max: 10,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.3,
+    });
+  });
+}
+// ============================================
+// CERTIFICATE MODAL FUNCTIONS
+// ============================================
+
+function openCertificateModal(title, issuer, date, description, certId, imagePath) {
+  document.getElementById("certModalTitle").innerText = title;
+  document.getElementById("certModalIssuer").innerText = issuer;
+  document.getElementById("certModalDate").innerText = date;
+  document.getElementById("certModalDesc").innerText = description;
+  document.getElementById("certModalId").innerText = certId;
+  document.getElementById("certificateImg").src = imagePath;
+  document.getElementById("certificateModal").style.display = "block";
+}
+
+function closeCertificateModal() {
+  document.getElementById("certificateModal").style.display = "none";
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  let projectModal = document.getElementById("projectModal");
+  let certModal = document.getElementById("certificateModal");
+  
+  if (event.target == projectModal) {
+    projectModal.style.display = "none";
+  }
+  if (event.target == certModal) {
+    certModal.style.display = "none";
+  }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeCertificateModal();
+    closeModal();
+  }
+});
